@@ -1,0 +1,8 @@
+{
+  "name": "get_doctor_appointment",
+  "description": "get the doctor's available time slot with name and id",
+  "color": "linear-gradient(rgb(115,75,216), rgb(233,93,84))",
+  "iconSrc": "",
+  "schema": "[]",
+  "func": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Output Schema as variables. Ex: Property = userid, Variable = $userid\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://voicebot.keoscx.com/dr-schedule/api/appointments/';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}"
+}
